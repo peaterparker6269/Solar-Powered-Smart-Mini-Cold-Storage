@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IoT Based Solar Powered Smart Mini Cold Storage</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            background: #f4f8f5;
+            color: #222;
+        }
+
+        /* HEADER */
+
+        header {
+            background: linear-gradient(135deg, #0b6e4f, #159957);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            max-width: 900px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            background: #063f2e;
+            text-align: center;
+            padding: 14px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #8cffc1;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #0b6e4f;
+            margin-bottom: 35px;
+            font-size: 32px;
+        }
+
+        .intro {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #0b6e4f;
+            margin-bottom: 10px;
+        }
+
+        /* IMAGES */
+
+        .image-box {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        /* COMPONENT TABLE */
+
+        .components {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #0b6e4f;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f7f7f7;
+        }
+
+        /* VIDEO */
+
+        .video-section {
+            background: #e9f7ef;
+        }
+
+        .video-container {
+            max-width: 850px;
+            margin: auto;
+            background: black;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 480px;
+            border: none;
+            display: block;
+        }
+
+        .video-description {
+            text-align: center;
+            max-width: 850px;
+            margin: 20px auto 0;
+            font-size: 17px;
+        }
+
+        /* BUTTON */
+
+        .download {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0b6e4f;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 18px;
+        }
+
+        .btn:hover {
+            background: #063f2e;
+        }
+
+        /* HIGHLIGHT */
+
+        .highlight {
+            background: white;
+            border-left: 5px solid #0b6e4f;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #063f2e;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 45px 15px;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            nav {
+                padding: 10px 5px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 6px;
+                font-size: 13px;
+            }
+
+            section {
+                padding: 45px 15px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .intro {
+                font-size: 16px;
+            }
+
+            .video-container iframe {
+                height: 420px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <h1>
+        IoT Based Solar Powered Smart Mini Cold Storage
+    </h1>
+
+    <p>
+        A low-cost solar-powered smart cold storage solution
+        for preserving fresh vegetables in rural and remote areas.
+    </p>
+
+</header>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="#about">About</a>
+    <a href="#objectives">Objectives</a>
+    <a href="#working">Working</a>
+    <a href="#components">Components</a>
+    <a href="#prototype">Prototype</a>
+    <a href="#circuit">Circuit</a>
+    <a href="#video">Demo</a>
+    <a href="#report">Report</a>
+
+</nav>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            About The Project
+        </h2>
+
+        <p class="intro">
+
+            The IoT Based Solar Powered Smart Mini Cold Storage
+            is designed to provide a compact and energy-efficient
+            storage solution for fresh vegetables.
+
+            The system combines solar energy, battery backup,
+            cooling, temperature and humidity monitoring, and
+            IoT technology.
+
+        </p>
+
+        <div class="highlight">
+
+            <strong>Project Focus:</strong>
+
+            Reducing post-harvest losses by providing a compact,
+            smart and renewable-energy-based storage solution
+            for fresh vegetables.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= OBJECTIVES ================= -->
+
+<section id="objectives">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Project Objectives
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>☀️ Solar Powered</h3>
+
+                <p>
+                    Use solar energy as the primary power source
+                    for the system.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>❄️ Cooling</h3>
+
+                <p>
+                    Provide a suitable cooling environment
+                    for fresh vegetable storage.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>📡 IoT Monitoring</h3>
+
+                <p>
+                    Monitor temperature and humidity using
+                    ESP32 and sensors.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🌱 Farmer Friendly</h3>
+
+                <p>
+                    Develop a compact and affordable storage
+                    concept suitable for decentralized use.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WORKING ================= -->
+
+<section id="working">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            How It Works
+        </h2>
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>1. Solar Energy</h3>
+
+                <p>
+                    The solar panel generates electrical energy
+                    and supports battery charging.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>2. Water Circulation</h3>
+
+                <p>
+                    A DC water pump circulates water through
+                    the cooling pad.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>3. Air Circulation</h3>
+
+                <p>
+                    A DC fan moves air through the cooling
+                    system and storage chamber.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>4. Smart Monitoring</h3>
+
+                <p>
+                    ESP32 and DHT22 monitor temperature
+                    and humidity conditions.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>5. Display</h3>
+
+                <p>
+                    The OLED display shows sensor readings
+                    to the user.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>6. Vegetable Storage</h3>
+
+                <p>
+                    Fresh vegetables are stored inside the
+                    insulated storage chamber.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COMPONENTS ================= -->
+
+<section id="components">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Main Components
+        </h2>
+
+        <div class="components">
+
+            <table>
+
+                <tr>
+                    <th>Component</th>
+                    <th>Specification</th>
+                    <th>Purpose</th>
+                </tr>
+
+
+                <tr>
+                    <td>Solar Panel</td>
+                    <td>20W</td>
+                    <td>Power generation</td>
+                </tr>
+
+
+                <tr>
+                    <td>Battery</td>
+                    <td>12V, 7Ah</td>
+                    <td>Energy storage and backup</td>
+                </tr>
+
+
+                <tr>
+                    <td>ESP32</td>
+                    <td>ESP32-WROOM-32</td>
+                    <td>Control and IoT monitoring</td>
+                </tr>
+
+
+                <tr>
+                    <td>DHT22</td>
+                    <td>Temperature & Humidity Sensor</td>
+                    <td>Environmental monitoring</td>
+                </tr>
+
+
+                <tr>
+                    <td>OLED Display</td>
+                    <td>0.96 inch I2C</td>
+                    <td>Display sensor readings</td>
+                </tr>
+
+
+                <tr>
+                    <td>DC Fan</td>
+                    <td>12V, 120mm</td>
+                    <td>Air circulation</td>
+                </tr>
+
+
+                <tr>
+                    <td>Water Pump</td>
+                    <td>12V DC</td>
+                    <td>Water circulation</td>
+                </tr>
+
+
+                <tr>
+                    <td>Cooling Pad</td>
+                    <td>30 × 20 × 5 cm</td>
+                    <td>Evaporative cooling</td>
+                </tr>
+
+
+                <tr>
+                    <td>Insulation</td>
+                    <td>25mm EPS</td>
+                    <td>Reduce heat transfer</td>
+                </tr>
+
+
+                <tr>
+                    <td>Relay / MOSFET</td>
+                    <td>Load Control</td>
+                    <td>Control electrical loads</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROTOTYPE ================= -->
+
+<section id="prototype">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Prototype
+        </h2>
+
+
+        <div class="image-box">
+
+            <img
+                src="images/prototype.png"
+                alt="Smart Mini Cold Storage Prototype"
+            >
+
+        </div>
+
+
+        <div class="image-box">
+
+            <img
+                src="images/cross-section.png"
+                alt="Cold Storage Cross Section"
+            >
+
+        </div>
+
+
+        <div class="image-box">
+
+            <img
+                src="images/dimensions.png"
+                alt="Cold Storage Dimensions"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CIRCUIT ================= -->
+
+<section id="circuit">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Circuit Diagram
+        </h2>
+
+
+        <div class="image-box">
+
+            <img
+                src="images/circuit.png"
+                alt="Smart Mini Cold Storage Circuit Diagram"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= VIDEO ================= -->
+
+<section id="video" class="video-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🎥 Project Demo
+        </h2>
+
+
+        <div class="video-container">
+
+            <iframe
+                src="https://www.youtube.com/embed/s4AkicFUfRs"
+                title="IoT Based Solar Powered Smart Mini Cold Storage Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+
+        <p class="video-description">
+
+            Demonstration of the IoT Based Solar Powered
+            Smart Mini Cold Storage prototype, including
+            its components, cooling system and working principle.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROJECT REPORT ================= -->
+
+<section id="report">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            📄 Project Report
+        </h2>
+
+
+        <div class="download">
+
+            <p>
+
+                View the complete project report containing
+                the system design, components, working principle,
+                advantages, limitations and future scope.
+
+            </p>
+
+
+            <a
+                class="btn"
+                href="project-report.pdf"
+                target="_blank">
+
+                📄 View Project Report
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONCLUSION ================= -->
+
+<section>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Conclusion
+        </h2>
+
+
+        <p class="intro">
+
+            The IoT Based Solar Powered Smart Mini Cold Storage
+            combines renewable energy, cooling technology and
+            smart monitoring into a compact system.
+
+            The concept aims to provide a decentralized storage
+            solution for fresh vegetables, particularly in areas
+            where reliable electricity and transportation
+            infrastructure can be challenging.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 IoT Based Solar Powered Smart Mini Cold Storage
+    </p>
+
+    <p>
+        Solar Energy • IoT • Smart Agriculture
+    </p>
+
+</footer>
+
+
+</body>
+</html>
